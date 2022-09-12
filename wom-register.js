@@ -44,41 +44,6 @@
 	// + --------------------------------------------------------------------------- +
 
 	// + --------------------------------------------------------------------------- +
-	// #region Retrieve Sheet Data
-	// + --------------------------------------------------------------------------- +
-	const sheetID = '1SaB0r_8Y4aO1i7_XH4uv8z6gzOd9BGytgxP-JM22NpY';
-	const base = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?`;
-	const sheetName = 'Database';
-	const query = encodeURIComponent('Select *');
-	const sheetUrl = `${base}&sheet=${sheetName}&tq=${query}`;
-	const data = [];
-
-	document.addEventListener('DOMContentLoaded', init);
-	function init() {
-		fetch(sheetUrl)
-		.then(res => res.text())
-		.then(rep => {
-			const jsData = JSON.parse(rep.substr(47).slice(0,-2));
-			const colz = [];
-			jsData.table.cols.forEach((heading) => {
-				if(heading.label) {
-					colz.push(heading.label.toLowerCase().replace(/\s/g,''));
-				};
-			});
-			jsData.table.rows.forEach((main) => {
-				const row = {};
-				colz.forEach((ele, ind) => {
-					row[ele] = (main.c[ind] != null) ? main.c[ind].v : '';
-				});
-				data.push(row);
-			});
-		});
-		console.log(data);
-	};
-	// #endregion
-	// + --------------------------------------------------------------------------- +
-
-	// + --------------------------------------------------------------------------- +
 	// #region Authentication
 	// + --------------------------------------------------------------------------- +
 	function lookupUser(str) {
