@@ -49,7 +49,6 @@
 	function lookupUser(str) {
 		let userData = formatFormData(str); // fullname, phone, email & referralCode
 		let result = 'failure';
-		console.log(data);
 		for(let i = 0, n = data.length; i < n; i++){ // for has way better performance and since I'm working with a huge chunk of data, why not. Also, call data.length just once.
 					if(data[i].phonenumber  ==  userData[1][1] || data[i].email ==  userData[2][1]) {
 						result = 'failure';
