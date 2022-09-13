@@ -63,7 +63,6 @@
 					}
 				};
 		};
-		console.log(`Result: ${result}     Referal:${referal}`)
 		return [result, referal];
 	}
 	
