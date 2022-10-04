@@ -61,8 +61,6 @@
 	}
 
 	function authSuccess() {
-		showCode();
-
 		let thankyouDiv = document.querySelector('.c-thankyou');
 		let form = document.querySelector('form');
 
@@ -78,10 +76,6 @@
 	function generateReferalCode() {
 		let d = new Date();
 		return `${d.getDate()}${d.getDay()}${d.getHours()}${d.getMinutes()}${d.getSeconds()}`
-	};
-
-	function showCode() {
-		document.getElementById('genCode').innerText = generateReferalCode();
 	};
 	// #endregion
 	// + --------------------------------------------------------------------------- +
