@@ -47,24 +47,19 @@
 	// + --------------------------------------------------------------------------- +
 	function lookupUser(str) {
 		let userData = formatFormData(str); // fullname, phone, email & referralCode
-		let result = 'failure';
+		let result = 'success';
 		let referal = 'none';
 		for(let i = 0, n = data.length; i < n; i++){ // for has way better performance and since I'm working with a huge chunk of data, why not. Also, call data.length just once.
-				if(data[i].code == userData[3][1]) {
-					if(data[i].phonenumber  ==  userData[1][1] || data[i].email ==  userData[2][1]) {
-						result = 'failure';
-						console.log("You can't refer yourself.");
-					} else {
-						result = 'success';
-						referal = "{\"Referer Name\": \"" +data[i].fullname +"\", "
-												+ "\"Referer Phone\": \"" +data[i].phonenumber+"\" , "
-												+ "\"Referer Email\": \"" +data[i].email+"\" , "
-												+ "\"Referer Credit\": \"" +data[i].credit+"\"}";
-					}
-				};
+			if(data[i].phonenumber  ==  userData[1][1] || data[i].email ==  userData[2][1]) { result = "failure"; return [result, referal]; }
+			if(data[i].code == userData[3][1]) {
+				referal = "{\"Referer Name\": \"" +data[i].fullname +"\", "
+										+ "\"Referer Phone\": \"" +data[i].phonenumber+"\" , "
+										+ "\"Referer Email\": \"" +data[i].email+"\" , "
+										+ "\"Referer Credit\": \"" +data[i].credit+"\"}";
+			}
 		};
 		return [result, referal];
-	}
+	};
 	
 	function authSuccess() {
 		let warningDiv = document.querySelector('.u-warning');
