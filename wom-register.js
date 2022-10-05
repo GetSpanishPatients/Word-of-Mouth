@@ -48,17 +48,15 @@
 	// + --------------------------------------------------------------------------- +
 	function lookupUser(str) {
 		let userData = formatFormData(str); // fullname, phone, email & referralCode
-		let result = 'failure';
+		let result = 'success';
 		for(let i = 0, n = data.length; i < n; i++){ // for has way better performance and since I'm working with a huge chunk of data, why not. Also, call data.length just once.
-					if(data[i].phonenumber  ==  userData[1][1] || data[i].email ==  userData[2][1]) {
-						result = 'failure';
-						console.log("You're already subscribed.");
-					} else {
-						result = 'success';
-					}
-			};
+			if(data[i].phonenumber  ==  userData[1][1] || data[i].email ==  userData[2][1])	{
+				result = 'failure';
+				return result;
+			}
+		};
 		return result;
-	}
+	};
 
 	function authSuccess() {
 		let thankyouDiv = document.querySelector('.c-thankyou');
@@ -71,7 +69,7 @@
 	function authFailure() {
 		let warningDiv = document.querySelector('.u-warning');
 		warningDiv.classList.add('u-warning-active');
-	}
+	};
 
 	function generateReferalCode() {
 		let d = new Date();
