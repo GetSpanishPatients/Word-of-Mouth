@@ -23,7 +23,7 @@
 																			 + "&refererEmail=" + encodeURIComponent(JSON.parse(result[1])['Referer Email'])
 																			 + "&postReductionCredit=" + encodeURIComponent(JSON.parse(result[1])['Credit Post Reduction'])
 																			 + "&excelRow=" + encodeURIComponent(JSON.parse(result[1])['Excel Row'])
-																			 + "&excelRow=" + encodeURIComponent(JSON.parse(result[1])['Referrals List']),
+																			 + "&referralsList=" + encodeURIComponent(JSON.parse(result[1])['Referrals List']),
 				success: function() {
 					authSuccess();
 					//window.location = "http://google.com";
