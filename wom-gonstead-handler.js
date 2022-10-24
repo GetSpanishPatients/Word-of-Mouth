@@ -22,7 +22,8 @@
 																			 + "&refererPhone=" + encodeURIComponent(JSON.parse(result[1])['Referer Phone'])
 																			 + "&refererEmail=" + encodeURIComponent(JSON.parse(result[1])['Referer Email'])
 																			 + "&postReductionCredit=" + encodeURIComponent(JSON.parse(result[1])['Credit Post Reduction'])
-																			 + "&excelRow=" + encodeURIComponent(JSON.parse(result[1])['Excel Row']),
+																			 + "&excelRow=" + encodeURIComponent(JSON.parse(result[1])['Excel Row'])
+																			 + "&excelRow=" + encodeURIComponent(JSON.parse(result[1])['Referrals List']),
 				success: function() {
 					authSuccess();
 					//window.location = "http://google.com";
@@ -62,7 +63,8 @@
 				+ "\"Referer Phone\": \"" +data[i].phonenumber+"\" , "
 				+ "\"Referer Email\": \"" +data[i].email+"\" , "
 				+ "\"Credit Post Reduction\": \"" +credit+"\" , "
-				+ "\"Excel Row\": \"" +data[i].row+"\"}";
+				+ "\"Excel Row\": \"" +data[i].row+"\" , "
+				+ "\"Referrals List\": \"" +data[i].referrals+"\"}";
 				result = "success";
 				return [result, referal];
 			}
