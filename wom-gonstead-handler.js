@@ -63,8 +63,11 @@
 		let userData = formatFormData(str); // fullname, phone
 		let result = 'failure';
 		let referal = 'none';
-		let creditClaimAmmount = 10 // DEVELOPER NOTE: Reduce the necessary credit manually here. ALWAYS update the code when the
-																// clinic updates their offer.
+		let redeemCredit = { // add/update different campaign redeem credit values
+			Liquivida: 10,
+			CHS: 25
+		};
+
 		for(let i = 0, n = data.length; i < n; i++){
 			if (data[i].phonenumber  ==  userData[1][1] && !isRedeemContactValid(data[i].referrals)) {
 				result = 'not found';
@@ -72,7 +75,7 @@
 			}
 
 			if(data[i].phonenumber  ==  userData[1][1] && isCreditUnclaimed(data[i].referrals))	{
-				let credit = data[i].credit - creditClaimAmmount;
+				let credit = data[i].credit - redeemCredit[data[i].campaign];
 				let referralList = stringifyReferralData(data[i].referrals);
 
 				referal = "{\"Referer Name\": \"" +data[i].fullname +"\", "
